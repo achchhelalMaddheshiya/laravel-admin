@@ -1,0 +1,121 @@
+{
+    "name": "viral/laravel-adminpanel",
+    "description": "The Laravel AdminPanel with API Boilerplate.",
+    "keywords": [
+        "framework",
+        "laravel",
+        "boilerplate",
+        "adminpanel",
+        "rest-api"
+    ],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^7.3|^8.0",
+        "anhskohbo/no-captcha": "^3.3",
+        "arcanedev/log-viewer": "^8.2",
+        "arcanedev/no-captcha": "^12.2",
+        "barryvdh/laravel-cors": "^3.0",
+        "bumbummen99/shoppingcart": "^4.0",
+        "bvipul/generator": "^6.0",
+        "codedungeon/phpunit-result-printer": "^0.31.0",
+        "codenix-sv/coingecko-api": "^1.0",
+        "creativeorange/gravatar": "~1.0",
+        "cviebrock/eloquent-sluggable": "^8.0",
+        "davejamesmiller/laravel-breadcrumbs": "^5.3",
+        "doctrine/dbal": "^3.1",
+        "fideloper/proxy": "^4.0",
+        "filp/whoops": "^2.14",
+        "fruitcake/laravel-cors": "^2.0",
+        "genealabs/laravel-caffeine": "^8.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "hieu-le/active": "^8.0",
+        "jaggedsoft/php-binance-api": "^0.5.24",
+        "laravel/framework": "^8.0",
+        "laravel/helpers": "^1.5",
+        "laravel/passport": "^10.2",
+        "laravel/sanctum": "^2.11",
+        "laravel/socialite": "^5.2",
+        "laravel/telescope": "^4.6",
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.3",
+        "laravelcollective/html": "^6.2",
+        "pragmarx/google2fa-laravel": "^2.3",
+        "spatie/laravel-cookie-consent": "^3.2",
+        "yajra/laravel-datatables-oracle": "~9.0"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
+        "barryvdh/laravel-ide-helper": "^2.6",
+        "brianium/paratest": "^6.2",
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        },
+        "classmap": [
+            "tests/TestCase.php"
+        ],
+        "files": [
+            "tests/Utilities/helpers.php"
+        ]
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ],
+        "clear-all": [
+            "@php artisan clear-compiled",
+            "@php artisan cache:clear",
+            "@php artisan route:clear",
+            "@php artisan view:clear",
+            "@php artisan config:clear",
+            "composer dumpautoload -o"
+        ],
+        "cache-all": [
+            "@php artisan config:cache",
+            "@php artisan route:cache"
+        ],
+        "cc": [
+            "composer clear-all",
+            "composer cache-all"
+        ],
+        "format": [
+            "./vendor/bin/php-cs-fixer fix app/  --show-progress=estimating",
+            "./vendor/bin/php-cs-fixer fix config/  --show-progress=estimating",
+            "./vendor/bin/php-cs-fixer fix database/  --show-progress=estimating",
+            "./vendor/bin/php-cs-fixer fix resources/  --show-progress=estimating",
+            "./vendor/bin/php-cs-fixer fix routes/  --show-progress=estimating",
+            "./vendor/bin/php-cs-fixer fix tests/  --show-progress=estimating"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
